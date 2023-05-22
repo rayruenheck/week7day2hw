@@ -39,13 +39,17 @@ const shopItems=[{
 
 
 function shopItemFormat(obj){
-    console.log('==============================================================')
-    for(const [k,v] of Object.entries(obj)){
-        console.log(`${k}:    ${v}`)
+    
+    for(const e of obj){
+        console.log('==========================================================')
+        console.log(`name:    ${e.name}`)
+        console.log(`price:  ${e.price}`)
+        console.log(`desc:    ${e.desc}`)
+        console.log(`category   ${e.category}`)
     }
 
 }
-console.log(shopItems.map((x) => shopItemFormat(x) ))
+shopItemFormat(shopItems) 
 
 const hwPerson = {
     pizza:["Deep Dish","South Side Thin Crust"],
@@ -62,14 +66,10 @@ const hwPerson = {
 }
 
 function hwPersonFormat(obj){
-    for(const [k,v] of Object.entries(obj)){
-        console.log(`${k} contains: ${v}`)
-    }{if(typeof k === typeof obj){
-        for(const [b,c] of Object.entries(k)){
-            console.log(`${b} contains: ${c}`)
-        }
-    }}
-}
+    let result = ''
+        Object.keys(obj).forEach((i)=> {result += `{${i}contains: ${hwPerson[i]}`})
+            console.log(result)
+}        
     //   not really sure how to tackle shakes, i feel like im almost there
 hwPersonFormat(hwPerson)
 
@@ -111,14 +111,14 @@ isBigWord('this is a big word')
 // Use the randomNumber function provided below to gernerate a random number 1-12
 
 class GameMember{
-    constructor(hand){
+    constructor(){
         this.hand =[Math.floor(Math.random()*13),Math.floor(Math.random()*13)]
     }
     
 }
 class Player extends GameMember{
     hit(){if(this.hand.reduce((acc,num) => acc+num,0)<21){
-        this.hand.push(Math.floor(Math.random()*13)); console.log(this.hand)}else{
+        this.hand.push(Math.floor(Math.random()*13))+1; console.log(this.hand)}else{
             console.log('Bust')
         }
         
@@ -126,7 +126,7 @@ class Player extends GameMember{
 }
 class Dealer extends GameMember{
     hit(){if(this.hand.reduce((acc,num) => acc+num,0)<17){
-        this.hand.push(Math.floor(Math.random()*13)); console.log(this.hand)}else{
+        this.hand.push(Math.floor(Math.random()*13)) +1; console.log(this.hand)}else{
             console.log('dealer Bust')
         }
         
@@ -161,10 +161,5 @@ console.log(dealer.hand)
 //     }
 
 // 3: https://www.codewars.com/kata/59ca8246d751df55cc00014c/train/javascript
-// function hero(bullets, dragons){if(bullets/dragons >= 2){
-//     return true
-//   }else{
-//     return false
-//   }
-  
-//   }
+// function hero(bullets, dragons)
+        // return bullets/dragons >= 2
